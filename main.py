@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-
 import math
 import csv
 
@@ -49,13 +48,6 @@ def calculate_offset(distance, angle, height):
 file_path = 'data.txt'  # Replace with the path to your file
 servo_angles, distances = process_data(file_path)
 
-# print("Servo Angles:", servo_angles)
-# print("Distances:", distances)
-
-
-# After you have the servo_angles and distances arrays:
-# print("Number of Servo Angles:", len(servo_angles))
-# print("Number of Distances:", len(distances))
 x = []
 y = []
 z = []
@@ -80,11 +72,6 @@ for i in range(len(servo_angles)):
         x.append(x_offset)
         y.append(distances[i])
         z.append(round(z_coordinate,2))
-
-# # Print the calculated values
-# for i in range(len(x)):
-#     print(f"{x[i]}, {y[i]}, {z[i]}")
-
 # Open a new CSV file in write mode
 with open("RealData.csv", "w", newline="") as file:
     writer = csv.writer(file)
@@ -92,8 +79,6 @@ with open("RealData.csv", "w", newline="") as file:
     for x_val, y_val, z_val in zip(x, y, z):
         # Write each set of points on a new line in the CSV file
         writer.writerow([y_val, x_val, z_val])
-
-
 
 # Read the CSV file into a DataFrame with custom column names
 column_names = ['X', 'Y', 'Z']
